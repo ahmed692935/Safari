@@ -28,8 +28,13 @@ import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 
-const Layout = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);

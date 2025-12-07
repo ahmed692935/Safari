@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import Logo from "../assets/images/logosafari.png";
 
-const Navbar = ({ toggleSidebar }) => {
+// const Navbar = ({ toggleSidebar }) => {
+interface NavbarProps {
+  toggleSidebar: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -116,7 +121,7 @@ const Navbar = ({ toggleSidebar }) => {
           </div>
 
           {/* Right Section - Desktop (lg+) */}
-          <div className="hidden  lg:flex items-center space-x-3 md:space-x-5 lg:space-x-10 z-10">
+          <div className="hidden lg:flex items-center space-x-3 md:space-x-5 lg:space-x-10 z-10">
             {/* Total Price */}
             <div
               className={`text-right ${isScrolled ? "hidden md:block" : ""}`}
@@ -139,6 +144,9 @@ const Navbar = ({ toggleSidebar }) => {
 
             {/* Price Details Button */}
             <button
+              style={{
+                clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)",
+              }}
               className={`px-4 py-2 rounded transition-colors ${
                 isScrolled
                   ? "bg-white border border-gray-300 text-gray-800 hover:bg-gray-50"
@@ -147,6 +155,16 @@ const Navbar = ({ toggleSidebar }) => {
             >
               Price Details
             </button>
+            {/* <button className="relative w-full py-2 text-white rounded cursor-pointer">
+              <div
+                className="absolute inset-0 bg-[#EF9716] group-hover:bg-[#EF9716] transition-colors"
+                style={{
+                  clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)",
+                }}
+              ></div>
+
+              <span className="relative z-10">Price Details</span>
+            </button>  */}
 
             {/* You Confirmed Badge */}
             <div className="flex items-center space-x-2 px-3 md:px-4 py-2 rounded transition-colors">
